@@ -13,28 +13,29 @@ if len(single_chr) != 1:
 
 print("Searching for " + single_chr + " in " + word)
 
-count = 0
+count: int = 0
 
-if single_chr in word[0]:
+
+if single_chr == word[0]:
     print(single_chr + " found at index 0")
     count += 1
 
-if single_chr in word[1]:
+if single_chr == word[1]:
     print(single_chr + " found at index 1")
     count += 1
 
 
-if single_chr in word[2]:
+if single_chr == word[2]:
     print(single_chr + " found at index 2")
     count += 1
 
 
-if single_chr in word[3]:
+if single_chr == word[3]:
     print(single_chr + " found at index 3")
     count += 1
 
 
-if single_chr in word[4]:
+if single_chr == word[4]:
     print(single_chr + " found at index 4")
     count += 1
 
