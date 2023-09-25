@@ -24,8 +24,6 @@ def emojified(guess: str, secret_word: str) -> str:
     """Output string of emoji's."""
     assert len(guess) == len(secret_word)
     idx: int = 0
-
-
     secret_word_idx: int = 0
     emoji: str = ""
 
@@ -89,6 +87,7 @@ def main() -> None:
     # showing the user that the game ended
     if win is not True:
         print("X/6 - Sorry try again tomorrow!")
+
 
 if __name__ == "__main__":
     main()
