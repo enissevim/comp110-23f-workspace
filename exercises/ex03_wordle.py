@@ -1,64 +1,69 @@
-"""EX03 - Structured Wordle"""
+"""EX03 - Structured Wordle!"""
 __author__ = "730577037"
 
 
 # defining a function to determine if the letter guessed is in the secret word
 def contains_char(secret_word: str, char: str) -> bool:
-    """Indexing throughout the word to see if the character is there"""
+    """Indexing throughout the word to see if the character is there."""
     assert len(char) == 1
     idx: int = 0
+    found: bool = False
     while idx < len(secret_word):
         if char == secret_word[idx]:
-            return True   
+            found = True   
         idx += 1
-    return False
-    
+
+    if found is True:
+        return True
+    else:
+        return False    
 
 # defining function to return the correct emoji's for every guess
 def emojified(guess: str, secret_word: str) -> str:
+    """Output string of emoji's."""
     assert len(guess) == len(secret_word)
     idx: int = 0
+
+    secret_word_idx: int = 0
+    emoji: str = ""
+
 
     # creating emoji's
     WHITE_BOX: str = "\U00002B1C"
     GREEN_BOX: str = "\U0001F7E9"
     YELLOW_BOX: str = "\U0001F7E8"
 
-    secret_idx: int = 0
-    emoji: str = ""
-
-    while secret_idx < (len(secret_word)):
-    # show green box
-        if guess[secret_idx] == secret_word[secret_idx]:     
+    while secret_word_idx < len(secret_word):
+        # show green box
+        if guess[idx] == secret_word[secret_word_idx]:     
             emoji += GREEN_BOX
         else:
-        # declare a boolean variable to keep track of whether the guessed character exists anywhere else in the word
-            inside: bool = False
-            idx: int = 0
-            while (idx < (len(secret_word)) and (inside is not True)):
-                if guess[secret_idx] == secret_word[idx]:
-                    inside = True
-                else:
-                    idx += 1
-            # show yellow box
+            # declare a boolean variable to keep track of whether the guessed character exists anywhere else in the word
+            inside: bool = contains_char(secret_word, guess[idx])
+
+            # yellow box
             if inside is True:
                 emoji += YELLOW_BOX
-            # show white box
+            # white box
             else:
                 emoji += WHITE_BOX
-        # ends infinite loop
-        secret_idx = secret_idx + 1
+        
+        idx += 1
+        secret_word_idx = 0
+
     return emoji
 
 
 # defining function to ask for an input from the use
 def input_guess(length: int) -> str:
+    """Checking the lenght of the guess vs the length of the word."""
     guess: str = input(f"Enter a {length} character word: ")
     
     # making sure the user is entering 5 letter words
     while len(guess) != length:
-        guess: str = input(f"That wasn't {length} chars! Try again: ")
-    return guess
+        guess = input(f"That wasn't {length} chars! Try again: ")
+    else:
+        return guess
 
 # declaring a function that includes the secret word and allows the program to start
 def main() -> None:
@@ -72,9 +77,9 @@ def main() -> None:
         if win is False:
             print(f"=== Turn {turn}/6 ===") 
             new_guess: str = input_guess(len(secret_word))
-            result = emojified(new_guess, secret_word)
-            print(result)
-            if (new_guess == secret_word) :
+            results = emojified(new_guess, secret_word)
+            print(results)
+            if (new_guess == secret_word):
                 print(f"You won in {turn}/6 turns!")
                 win = True
         turn += 1
