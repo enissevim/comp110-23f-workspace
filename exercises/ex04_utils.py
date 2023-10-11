@@ -1,8 +1,9 @@
 """EX04 - `list` Utility Functions."""
 __author__ = "730577037"
 
+
 def all(int_list: list[int], num: int) -> bool:
-    """checks to see if the numbers in the list match the indicated number and returns True or False"""
+    """Checks to see if the numbers in the list match the indicated number and returns True or False."""
     idx: int = 0
 
     if len(int_list) == 0:
@@ -15,8 +16,9 @@ def all(int_list: list[int], num: int) -> bool:
                 return False
         return True
     
+
 def max(input: list[int]) -> int:
-    """returns the maximum value from a given list"""
+    """Returns the maximum value from a given list."""
     if len(input) == 0:
         raise ValueError("max() arg is an empty List")
     i: int = 0
@@ -28,8 +30,9 @@ def max(input: list[int]) -> int:
         i += 1
     return maximum
 
+
 def is_equal(first_list: list[int], second_list: list[int]) -> bool:
-    """checks to see if the two lists are equivalent to one another"""
+    """Checks to see if the two lists are equivalent to one another."""
     idx: int = 0
     if len(first_list) != len(second_list):
         return False
