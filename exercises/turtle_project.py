@@ -4,7 +4,9 @@ __author__ = "730577037"
 from turtle import Turtle, done
 import random
 
+
 def main() -> None:
+    """The entrypoint of my scene."""
     ertle: Turtle = Turtle()
     ertle.speed("fastest")
     draw_snowman(ertle, -250, -150, 20)
@@ -125,6 +127,7 @@ def draw_window_fill(a_turtle: Turtle, x: float, y: float, width: float) -> None
     a_turtle.forward(width)
     a_turtle.up()
 
+
 def draw_chimney(a_turtle: Turtle, x: float, y: float, width: float) -> None:
     """Draw a chimney on the house."""
     a_turtle.color("brown")
@@ -150,7 +153,6 @@ def draw_snowflake(a_turtle: Turtle, width: float) -> None:
     """Draw 30 snowflakes at random positions around the screen."""
     x = random.randint(-300, 300)
     y = random.randint(-200, 200)
-    size = random.uniform(5, 20)
     a_turtle.up()
     a_turtle.goto(x, y)
     a_turtle.down()
@@ -176,6 +178,7 @@ def draw_snowflake(a_turtle: Turtle, width: float) -> None:
     a_turtle.forward(width)
     a_turtle.up()
     a_turtle.hideturtle()
+
 
 if __name__ == "__main__":
     main()
